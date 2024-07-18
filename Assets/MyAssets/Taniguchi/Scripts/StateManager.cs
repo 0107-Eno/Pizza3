@@ -27,9 +27,11 @@ public abstract class StateManager<EState> : MonoBehaviour where EState : Enum
 
     public void TransitionToState(EState stateKey)
     {
+        IsTransitioningState = true;
         CurrentState.ExitState();
         CurrentState = States[stateKey];
         CurrentState.EnterState();
+        IsTransitioningState=false;
     }
     void OnTriggerEnter(Collider other) {
         CurrentState.OnTriggerEnter(other);

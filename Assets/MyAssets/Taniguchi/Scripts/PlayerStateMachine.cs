@@ -25,7 +25,6 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerStates>
         _context = new PlayerStateContext(_rb,_col);
         InitializeStates();
     }
-
     private void NullMessage()
     {
         Assert.IsNotNull(_rb, "_rb‚ªnull‚Å‚·");
@@ -34,6 +33,7 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerStates>
     private void InitializeStates()
     {
         States.Add(PlayerStates.Idle, new PlayerIdleState(_context, PlayerStates.Idle));
+        States.Add(PlayerStates.Movement, new PlayerMovementState(_context, PlayerStates.Movement));
         //IdleState‚ğÅ‰‚ÉŒÄ‚Ño‚·
         CurrentState = States[PlayerStates.Idle];
     }
